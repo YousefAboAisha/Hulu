@@ -61,11 +61,11 @@ export default function Navbar() {
           return (
             <div
               key={index}
-              className="relative hidden flex-col flex-wrap justify-center items-center gap-1 w-[60px] h-[50px] cursor-pointer group sm:flex"
+              className="relative hidden mt-3 flex-col flex-wrap justify-center items-center gap-1 w-[60px] h-[50px] cursor-pointer group sm:flex"
             >
               <FontAwesomeIcon
                 icon={tab.icon}
-                className="text-[#FFF] w-[22px] h-[22px] group-hover:animate-bounce "
+                className="text-[#FFF] w-[20px] h-[20px] group-hover:animate-bounce"
               />
               <span className="text-[#FFF] text-[15px]">{tab.title}</span>
             </div>

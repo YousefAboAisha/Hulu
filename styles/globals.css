@@ -18,6 +18,11 @@ ul li {
   list-style: none;
 }
 
+button,
+input[type="reset"] {
+  cursor: pointer;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }
