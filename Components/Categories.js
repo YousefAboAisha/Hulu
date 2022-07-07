@@ -23,7 +23,7 @@ export default function Categories() {
           );
         })}
       </div>
-      <div className="absolute top-[50%] translate-x-[-50%] translate-y-[-50%] right-[-7%] bg-gradient-to-l from-red-100 h-10 w-[12%]"></div>
+      <div className="absolute top-[50%] translate-x-[-50%] translate-y-[-50%] right-[-7%] bg-gradient-to-l from-[#FFF] h-10 w-[10%]"></div>
     </div>
   );
 }

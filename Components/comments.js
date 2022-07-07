@@ -66,13 +66,13 @@ export default function Comments() {
       <div className="relative flex gap-2 items-center">
         <button
           onClick={(e) => commentHandler(e)}
-          className="text-[13px] mt-2 px-2 min-w-[100px] py-2 rounded text-[#FFF] shadow-2xl bg-dark"
+          className="text-[13px] mt-2 px-2 min-w-[100px] py-2 rounded text-[#FFF] bg-dark"
         >
           {Loading ? "POSTING..." : "POST"}
         </button>
 
         <button
-          className="text-[13px] mt-2 px-5 py-[6px] rounded text-[red] border-[1px] border-dark shadow-2xl"
+          className="text-[13px] mt-2 px-5 py-[6px] rounded text-dark font-bold border-[1px] border-dark "
           onClick={(e) => clearInputs(e)}
         >
           CLEAR

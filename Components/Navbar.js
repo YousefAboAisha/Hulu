@@ -44,7 +44,7 @@ export default function Navbar() {
         <Link href={"/trending"}>
           <a>
             <svg
-              fill="#FFF"
+              fill="#F6C90E"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
               width="65px"

@@ -69,11 +69,11 @@ export default function Movie({ movie }) {
           <p className="w-full">{movie.overview}</p>
           <div className="relative flex gap-3">
             <a href={movie.homepage} target="_blank" rel="noreferrer">
-              <button className="relative border-1 flex items-center gap-2 mt-5 p-3 rounded-md text-[#FFF] shadow-xl bg-dark hover:bg-transparent hover:text-dark ease-in-out duration-500">
+              <button className="relative border-1 flex items-center gap-2 mt-5 p-3 rounded-md text-[#FFF] shadow-xl bg-dark hover:bg-transparent hover:border-dark border-[1px] hover:text-dark ease-in-out duration-500">
                 Download Now
                 <FontAwesomeIcon
                   icon={faCirclePlay}
-                  className="w-[22px] h-[22px]"
+                  className="w-[22px] h-[22px] text-gold"
                 />
               </button>
             </a>
@@ -95,12 +95,12 @@ export default function Movie({ movie }) {
             ) : null}
           </div>
 
-          <div className="my-10">
+          {/* <div className="my-10">
             <h2 className="mt-5 font-bold text-dark text-2xl mb-1">
               Production Companies
             </h2>
             <Carousel data={movie.production_companies} url={baseURL} />
-          </div>
+          </div> */}
         </div>
       </div>
 

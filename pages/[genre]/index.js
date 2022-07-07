@@ -8,7 +8,7 @@ export default function Home({ movies }) {
   // console.log(router.query.genre);
 
   return (
-    <div className="bg-red-100">
+    <div>
       <Head>
         <title>Hulu 2.2</title>
         <link rel="icon" href="/logo.png" />
