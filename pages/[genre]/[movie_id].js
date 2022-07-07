@@ -6,18 +6,16 @@ import { faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "../../Components/carousel";
 import Table from "../../Components/table";
 import Comments from "../../Components/comments";
+import requests from "../../utils/requests";
 
-export default function Movie({ movie }) {
+export default function Movie({ movie, relatedMovies }) {
   const router = useRouter();
 
-  console.log(movie);
+  console.log("Movie Data", movie);
+  console.log("Related Movies", relatedMovies);
+
   const baseURL = "https://image.tmdb.org/t/p/original/";
   const imdbURL = "https://www.imdb.com/title/";
-
-  const obj = {
-    name: "yousef",
-    age: 21,
-  };
 
   return movie.success == false ? (
     <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex justify-center flex-col items-center gap-4 min-h-[800px]">
@@ -33,7 +31,7 @@ export default function Movie({ movie }) {
     <div className="relative mt-[80px] ">
       {/* Comments right section */}
       <div className="hidden md:hidden lg:w-3/12 lg:fixed lg:block h-full p-2 top-[85px] text-[#FFF] overflow-y-scroll pb-[250px] ">
-        <Comments />
+        {/* <Comments /> */}
       </div>
 
       {/* Middle section */}
@@ -95,12 +93,16 @@ export default function Movie({ movie }) {
             ) : null}
           </div>
 
-          {/* <div className="my-10">
+          <div className="my-10">
             <h2 className="mt-5 font-bold text-dark text-2xl mb-1">
-              Production Companies
+              Related Movies
             </h2>
-            <Carousel data={movie.production_companies} url={baseURL} />
-          </div> */}
+            <Carousel data={relatedMovies.results} />
+          </div>
+
+          <div className="relative mb-[30px]">
+            <Comments />
+          </div>
         </div>
       </div>
 
@@ -116,14 +118,25 @@ export async function getServerSideProps(context) {
   const API_KEY = process.env.API_KEY;
   const { params } = context;
   const { movie_id } = params;
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
-  );
-  const data = await res.json();
+  const genre = context.query.genre;
+
+  const [req1, req2] = await Promise.all([
+    fetch(
+      `https://api.themoviedb.org/3${
+        requests[genre]?.url || requests.trending.url
+      }`
+    ),
+    fetch(
+      `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+    ),
+  ]);
+
+  const [relatedMovies, movie] = await Promise.all([req1.json(), req2.json()]);
 
   return {
     props: {
-      movie: data,
+      movie,
+      relatedMovies,
     },
   };
 }
