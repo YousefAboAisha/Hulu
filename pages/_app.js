@@ -12,7 +12,7 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
+    <Layout className="scroll-smooth transition-all">
       <Component {...pageProps} />
     </Layout>
   );
