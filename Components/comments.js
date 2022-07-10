@@ -1,5 +1,6 @@
 import Comment from "./comment";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import useSWR from "swr";
 import Spinner from "./spinner/spinner";
 
@@ -7,10 +8,9 @@ export default function Comments() {
   const [comment, setComment] = useState("");
   const [Loading, setLoading] = useState(null);
 
-  const fetcher = (url) =>
-    fetch("https://hulu-5b829-default-rtdb.firebaseio.com/comments.json").then(
-      (res) => res.json()
-    );
+  const router = useRouter();
+  const movie_id = router.query.movie_id;
+  // console.log(movie_id);
 
   const commentHandler = async (e) => {
     setLoading(true);
@@ -22,7 +22,7 @@ export default function Comments() {
     };
 
     const req = await fetch(
-      "https://hulu-5b829-default-rtdb.firebaseio.com/comments.json",
+      `https://hulu-5b829-default-rtdb.firebaseio.com/comments/${movie_id}.json`,
       {
         method: "post",
         body: JSON.stringify(data),
@@ -41,14 +41,19 @@ export default function Comments() {
     setComment("");
   };
 
-  const { data, error } = useSWR(
+  const fetcher = (url) =>
+    fetch(
+      `https://hulu-5b829-default-rtdb.firebaseio.com/comments/${movie_id}.json`
+    ).then((res) => res.json());
+
+  const { data, error, mutate } = useSWR(
     "https://api.github.com/repos/vercel/swr",
     fetcher
   );
 
-  if (error) return <div>Failed to load</div>;
+  mutate({ ...data });
 
-  //   console.log(data);
+  if (error) return <div>Failed to load</div>;
 
   return (
     <form className="relative flex flex-col text-dark p-2">
@@ -79,13 +84,26 @@ export default function Comments() {
         </button>
       </div>
 
-      {data ? (
-        Object.entries(data).map(([key, { text, date }]) => {
-          return <Comment key={date} comment={text} />;
-        })
-      ) : (
-        <Spinner />
-      )}
+      <div className="relative max-h-[250px] overflow-y-scroll px-2 py-3 mt-5">
+        {data ? (
+          Object.entries(data).map(([key, { text, date }]) => {
+            return (
+              <Comment
+                key={date}
+                comment={text}
+                movie_id={movie_id}
+                comment_id={key}
+              />
+            );
+          })
+        ) : data == null || data == undefined ? (
+          <h2 className="mt-[50px] mx-auto font-bold text-lg">
+            No Comments yet !
+          </h2>
+        ) : (
+          <Spinner />
+        )}
+      </div>
     </form>
   );
 }
