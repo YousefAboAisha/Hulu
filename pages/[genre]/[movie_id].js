@@ -31,7 +31,7 @@ export default function Movie({ movie, relatedMovies }) {
     <div className="relative mt-[80px] ">
       {/* Comments right section */}
       <div className="hidden md:hidden lg:w-3/12 lg:fixed lg:block h-full p-2 top-[85px] text-[#FFF] overflow-y-scroll pb-[250px] ">
-        {/* <Comments /> */}
+        <h2>faw</h2>
       </div>
 
       {/* Middle section */}
@@ -50,6 +50,7 @@ export default function Movie({ movie, relatedMovies }) {
           />
           <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black h-[20%] w-full"></div>
         </div>
+
         <div className="lg:p-0 md:p-3 sm:p-3 mt-[20px] p-3 lg:w-11/12 md:full sm:full mx-auto">
           <h2 className="text-2xl font-bold text-dark mb-6">
             {movie.title || movie.original_name} (

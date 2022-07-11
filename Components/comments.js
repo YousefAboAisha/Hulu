@@ -33,11 +33,12 @@ export default function Comments() {
     console.log(result);
     if (result) {
       setLoading(false);
-      clearInputs();
+      setComment("");
     }
   };
 
-  const clearInputs = () => {
+  const clearInputs = (e) => {
+    e.preventDefault();
     setComment("");
   };
 
@@ -84,8 +85,14 @@ export default function Comments() {
         </button>
       </div>
 
-      <div className="relative max-h-[250px] overflow-y-scroll px-2 py-3 mt-5">
-        {data ? (
+      <div className="relative h-[250px] overflow-y-scroll px-2 py-3 mt-5">
+        {!data || data == undefined ? (
+          <Spinner />
+        ) : Object.entries(data).length == 0 ? (
+          <h2 className="absolute left-[50%] translate-x-[-50%] mt-[20px] font-bold text-lg mx-auto">
+            Add the first comment !
+          </h2>
+        ) : (
           Object.entries(data).map(([key, { text, date }]) => {
             return (
               <Comment
@@ -93,15 +100,11 @@ export default function Comments() {
                 comment={text}
                 movie_id={movie_id}
                 comment_id={key}
+                mutate={mutate}
+                data={data}
               />
             );
           })
-        ) : data == null || data == undefined ? (
-          <h2 className="mt-[50px] mx-auto font-bold text-lg">
-            No Comments yet !
-          </h2>
-        ) : (
-          <Spinner />
         )}
       </div>
     </form>

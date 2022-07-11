@@ -14,7 +14,7 @@ export default function Thumnail({ result }) {
   console.log(result);
 
   return (
-    <div className="group rounded-md linear duration-500 hover:scale-[1.02] shadow-2xl">
+    <div className="group rounded-md linear duration-500 hover:scale-[1.02] shadow-lg">
       <Link href={`/${genre}/${result.id}`}>
         <Image
           layout="responsive"

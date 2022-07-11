@@ -17,17 +17,10 @@ export default function Navbar() {
 
   const tabs = [
     {
-      icon: faHome,
-      title: "Home",
-    },
-    {
       icon: faFireAlt,
       title: "Trending",
     },
-    {
-      icon: faCircleCheck,
-      title: "Verified",
-    },
+
     {
       icon: faSearch,
       title: "Search",
@@ -59,16 +52,15 @@ export default function Navbar() {
       <div className="relative flex items-center justify-center gap-10 mr-5">
         {tabs.map((tab, index) => {
           return (
-            <div
-              key={index}
-              className="relative hidden mt-3 flex-col flex-wrap justify-center items-center gap-1 w-[60px] h-[50px] cursor-pointer group sm:flex"
-            >
-              <FontAwesomeIcon
-                icon={tab.icon}
-                className="text-[#FFF] w-[20px] h-[20px] group-hover:animate-bounce"
-              />
-              <span className="text-[#FFF] text-[15px]">{tab.title}</span>
-            </div>
+            <Link href={`/${tab.title.toLowerCase()}`} key={index}>
+              <div className="relative hidden mt-3 flex-col flex-wrap justify-center items-center gap-1 w-[60px] h-[50px] cursor-pointer group sm:flex">
+                <FontAwesomeIcon
+                  icon={tab.icon}
+                  className="text-[#FFF] w-[20px] h-[20px]"
+                />
+                <span className="text-[#FFF] text-[15px]">{tab.title}</span>
+              </div>
+            </Link>
           );
         })}
         <FontAwesomeIcon
