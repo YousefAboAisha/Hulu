@@ -8,6 +8,7 @@ export default function Search() {
   const [Query, setQuery] = useState("");
   const [Data, setData] = useState();
   const [Loading, setLoading] = useState(null);
+  const [ErrorText, setErrorText] = useState("");
 
   const searchHandler = async () => {
     setLoading(true);
@@ -20,6 +21,10 @@ export default function Search() {
       setData(result.results);
       setLoading(false);
       console.log(result);
+
+      if (result.errors) {
+        setErrorText(result.errors[0] ?? "");
+      }
     }
   };
 
@@ -36,7 +41,7 @@ export default function Search() {
       <div className="flex relative items-center p-4 w-full lg:w-6/12 md:w-10/12 my-8">
         <div
           onClick={searchHandler}
-          className="absolute flex items-center justify-center bg-dark h-[42px] w-[50px] text-[#FFF]"
+          className="absolute flex items-center justify-center bg-dark h-[42px] w-[50px] text-[#FFF] cursor-pointer"
         >
           <FontAwesomeIcon icon={faSearch} className="h-4 w-4" />
         </div>
@@ -50,15 +55,19 @@ export default function Search() {
         />
       </div>
 
-      <div className="relative grid gap-5 md:gap-5 px-5 sm:grid md:grid-cols-2 lg:grid-cols-3 pt-[10px] pb-[50px] overflow-y-hidden xl:grid-cols-4 min-h-[400px]">
+      <div className="grid gap-5 md:gap-5 px-5 sm:grid md:grid-cols-2 lg:grid-cols-3 pt-[10px] pb-[50px] overflow-y-hidden xl:grid-cols-4 min-h-[400px]">
         {Loading ? (
-          <Spinner />
+          <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <Spinner />
+          </div>
         ) : Data && Data.length > 0 ? (
           Data.map((elem) => {
             return <Thumnail key={elem.id} result={elem} />;
           })
         ) : (
-          <h2 className="center text-lg">No results found !</h2>
+          <h2 className="text-lg absolute top-[50%] left-[50%] translate-x-[-50%] font-bold translate-y-[-50%]">
+            {ErrorText ?? "No results found !"}
+          </h2>
         )}
       </div>
     </div>
