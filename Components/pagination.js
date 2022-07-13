@@ -20,7 +20,11 @@ export default function Pagination() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="flex relative items-center mb-[50px] my-5 justify-center">
+=======
+    <div className="flex relative items-center mb-[50px] justify-center">
+>>>>>>> 704b4089503b21e3696de600cc04deeaaa8b17b9
       <button
         className="inline-flex items-center gap-2 py-2 px-4 mr-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         onClick={prevHandler}

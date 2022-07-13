@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Head from "next/head";
 import Categories from "../../Components/Categories";
 import Results from "../../Components/Results";
@@ -6,9 +5,7 @@ import requests from "../../utils/requests";
 import Pagination from "../../Components/pagination";
 
 export default function Home({ movies }) {
-  const [Page, setPage] = useState(1);
-  console.log(movies.results);
-  // console.log(router.query.genre);
+  // console.log(movies.results);
 
   return (
     <div>
