@@ -119,13 +119,10 @@ export async function getServerSideProps(context) {
   const API_KEY = process.env.API_KEY;
   const { params } = context;
   const { movie_id } = params;
-  const genre = context.query.genre;
 
   const [req1, req2] = await Promise.all([
     fetch(
-      `https://api.themoviedb.org/3${
-        requests[genre]?.url || requests.trending.url
-      }`
+      `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${API_KEY}&language=en-US`
     ),
     fetch(
       `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`

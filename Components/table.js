@@ -14,7 +14,7 @@ export default function Table({ movie }) {
               Tagline
             </th>
             <td className="flex px-2 py-2 gap-3 my-2 items-center text-dark">
-              {movie.tagline}
+              {movie.tagline || " - "}
             </td>
           </tr>
 
@@ -32,7 +32,7 @@ export default function Table({ movie }) {
                   : "text-dark"
               }`}
             >
-              {movie.status}
+              {movie.status || " - "}
             </td>
           </tr>
 
@@ -81,7 +81,7 @@ export default function Table({ movie }) {
               {movie.production_countries.map((elem, index) => {
                 return (
                   <span className="text-dark px-2 py-1 text-[14px]" key={index}>
-                    {elem.name} | {elem.iso_3166_1}
+                    {elem.name || " - "} | {elem.iso_3166_1 || " - "}
                   </span>
                 );
               })}

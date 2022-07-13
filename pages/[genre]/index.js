@@ -1,9 +1,12 @@
+import { useState } from "react";
 import Head from "next/head";
 import Categories from "../../Components/Categories";
 import Results from "../../Components/Results";
 import requests from "../../utils/requests";
+import Pagination from "../../Components/pagination";
 
 export default function Home({ movies }) {
+  const [Page, setPage] = useState(1);
   console.log(movies.results);
   // console.log(router.query.genre);
 
@@ -19,17 +22,21 @@ export default function Home({ movies }) {
       </div>
 
       <Results movies={movies.results} />
+
+      <Pagination />
     </div>
   );
 }
 
 export async function getServerSideProps(context) {
   const genre = context.query.genre;
+  const page = context.query.page;
+  console.log(page);
 
   const request = await fetch(
     `https://api.themoviedb.org/3${
       requests[genre]?.url || requests.trending.url
-    }`
+    }&page=${page}`
   );
   const data = await request.json();
 

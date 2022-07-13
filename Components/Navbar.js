@@ -34,7 +34,7 @@ export default function Navbar() {
   return (
     <div className="fixed w-[100%] flex justify-between items-center bg-dark z-[100000] min-h-[85px]">
       <div className="ml-5">
-        <Link href={"/trending"}>
+        <Link href={"/trending/?page=1"}>
           <a>
             <svg
               fill="#F6C90E"
