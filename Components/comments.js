@@ -89,7 +89,7 @@ export default function Comments() {
         {!data || data == undefined ? (
           <Spinner />
         ) : Object.entries(data).length == 0 ? (
-          <h2 className="absolute left-[50%] translate-x-[-50%] mt-[20px] font-bold text-lg mx-auto">
+          <h2 className="absolute left-[50%] translate-x-[-50%] mt-[20px] font-bold text-lg w-full text-center">
             Add the first comment !
           </h2>
         ) : (

@@ -49,18 +49,24 @@ input[type="reset"] {
 
 #nprogress .bar {
   background: #FFBB00 !important;
+  height: 5px;
 }
 
 #nprogress .peg {
   box-shadow: 0 0 10px #0F172A, 0 0 5px #0F172A;
 }
 
+
 #nprogress .spinner-icon {
-  border-top-color: #0F172A !important;
-  border-left-color: #0F172A !important;
-  display: block;
   position: fixed;
+  display: block;
   z-index: 1031;
-  bottom: 15px;
-  right: 15px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 50px !important;
+  height: 50px !important;
+  border-top-color: #FFBB00 !important;
+  border-left-color: #FFBB00 !important;
+  background-color: #0f172afd;
 }
