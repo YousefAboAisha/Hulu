@@ -1,7 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faThumbsUp,
+  faCircle,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -14,7 +18,7 @@ export default function Thumnail({ result }) {
   console.log(result);
 
   return (
-    <div className="group rounded-md linear duration-500 hover:scale-[1.02] shadow-lg">
+    <div className="relative group rounded-md linear duration-500 hover:scale-[1.02] shadow-lg">
       <Link href={`/${genre}/${result.id}`}>
         <Image
           layout="responsive"
@@ -26,8 +30,13 @@ export default function Thumnail({ result }) {
           }
           alt={result.title || result.original_name}
           className="cursor-pointer"
+          blurDataURL="https://reactnative-examples.com/wp-content/uploads/2022/02/default-loading-image.png"
+          placeholder="blur"
         />
       </Link>
+      <div className="absolute top-2 right-2 p-2 bg-[#ffffffda] backdrop-blur-[2px] rounded-full cursor-pointer ">
+        <FontAwesomeIcon icon={faHeart} className="h-5 w-5 text-[#e74c3c]" />
+      </div>
 
       <div className="p-2 bg-dark text-[#FFF]">
         <h2 className="my-2 truncate">

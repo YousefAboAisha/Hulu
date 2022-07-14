@@ -1,33 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faFireAlt,
-  faCircleCheck,
-  faSearch,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 export default function Sidebar({ toggle, setToggle }) {
   const tabs = [
     {
-      icon: faHome,
-      title: "Home",
-    },
-    {
-      icon: faFireAlt,
-      title: "Trending",
-    },
-    {
-      icon: faCircleCheck,
-      title: "Verified",
+      icon: faUser,
+      title: "Account",
     },
     {
       icon: faSearch,
       title: "Search",
     },
+
     {
-      icon: faUser,
-      title: "Account",
+      icon: faHeart,
+      title: "Whishlist",
     },
   ];
 
@@ -39,17 +27,19 @@ export default function Sidebar({ toggle, setToggle }) {
     >
       {tabs.map((tab, index) => {
         return (
-          <div
-            key={index}
-            className={`relative flex flex-col flex-wrap justify-center items-center gap-1 w-[60px] h-[50px] cursor-pointer group z-10 `}
-            onClick={() => setToggle(false)}
-          >
-            <FontAwesomeIcon
-              icon={tab.icon}
-              className="text-[#FFF] w-[22px] h-[22px] group-hover:animate-bounce "
-            />
-            <span className="text-[#FFF] text-[15px]">{tab.title}</span>
-          </div>
+          <Link href={`/${tab.title.toLowerCase()}`} key={index}>
+            <div
+              key={index}
+              className={`relative flex flex-col flex-wrap justify-center items-center gap-1 w-[60px] h-[50px] cursor-pointer z-10 `}
+              onClick={() => setToggle(false)}
+            >
+              <FontAwesomeIcon
+                icon={tab.icon}
+                className="text-[#FFF] w-[22px] h-[22px]"
+              />
+              <span className="text-[#FFF] text-[15px]">{tab.title}</span>
+            </div>
+          </Link>
         );
       })}
       <svg

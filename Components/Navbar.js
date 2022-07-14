@@ -3,9 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHome,
-  faFireAlt,
-  faCircleCheck,
+  faHeart,
   faSearch,
   faUser,
   faBarsStaggered,
@@ -17,17 +15,17 @@ export default function Navbar() {
 
   const tabs = [
     {
-      icon: faFireAlt,
-      title: "Trending",
+      icon: faUser,
+      title: "Account",
     },
-
     {
       icon: faSearch,
       title: "Search",
     },
+
     {
-      icon: faUser,
-      title: "Account",
+      icon: faHeart,
+      title: "Whishlist",
     },
   ];
 

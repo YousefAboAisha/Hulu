@@ -57,7 +57,7 @@ export default function Table({ movie }) {
               scope="row"
               className="px-6 py-4 text-dark font-bold whitespace-nowrap"
             >
-              Keywords
+              Genres
             </th>
             <td className="flex px-2 py-2 gap-3 my-2 items-center">
               {movie.genres.map((elem, index) => {
