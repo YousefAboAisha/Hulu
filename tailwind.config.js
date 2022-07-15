@@ -2,7 +2,8 @@
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./Components/**/*.{js,ts,jsx,tsx}",
+    "./Containers/**/*.{js,ts,jsx,tsx}",
     "./node_modules/tw-elements/dist/js/**/*.{js,ts,jsx,tsx}",
   ],
 
@@ -33,8 +34,10 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
   },
+
   plugins: [
     require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/typography"),
     "postcss-import",
     "tailwindcss",
     "autoprefixer",
