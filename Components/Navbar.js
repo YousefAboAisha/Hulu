@@ -51,7 +51,7 @@ export default function Navbar() {
         {tabs.map((tab, index) => {
           return (
             <Link href={`/${tab.title.toLowerCase()}`} key={index}>
-              <div className="relative hidden mt-3 flex-col flex-wrap justify-center items-center gap-1 w-[60px] h-[50px] cursor-pointer group sm:flex">
+              <div className="relative hidden mt-3 flex-col flex-wrap justify-center items-center gap-1 w-[60px] min-h-[65px] cursor-pointer group sm:flex">
                 <FontAwesomeIcon
                   icon={tab.icon}
                   className="text-[#FFF] w-[20px] h-[20px]"
