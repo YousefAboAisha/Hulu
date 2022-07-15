@@ -8,8 +8,8 @@ export default function Categories() {
   // console.log("dasldpa", Object.entries(requests));
 
   return (
-    <div className="relative flex justify-center mt-5 mb-[40px]">
-      <div className="flex items-center whitespace-nowrap py-6 overflow-x-scroll space-x-5 scrollbar-hide  px-5 ">
+    <div className="relative flex justify-center mt-3 mb-[20px]">
+      <div className="flex items-center whitespace-nowrap py-3 overflow-x-scroll space-x-5 scrollbar-hide  px-5 ">
         {Object.entries(requests).map(([key, { title, url }]) => {
           // console.log(key);
           return (

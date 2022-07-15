@@ -34,8 +34,8 @@ export default function Thumnail({ result }) {
           placeholder="blur"
         />
       </Link>
-      <div className="absolute top-2 right-2 p-2 bg-[#ffffffda] backdrop-blur-[2px] rounded-full cursor-pointer ">
-        <FontAwesomeIcon icon={faHeart} className="h-5 w-5 text-[#e74c3c]" />
+      <div className="absolute top-2 right-2 p-2 bg-[#ffffff42] backdrop-blur-[2px] rounded-full cursor-pointer ">
+        <FontAwesomeIcon icon={faHeart} className="h-4 w-4 text-[#e74c3c]" />
       </div>
 
       <div className="p-2 bg-dark text-[#FFF]">
