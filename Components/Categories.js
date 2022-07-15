@@ -9,7 +9,7 @@ export default function Categories() {
 
   return (
     <div className="relative flex justify-center mt-5 mb-[40px]">
-      <div className="flex items-center justify-center whitespace-nowrap py-6 overflow-x-scroll space-x-5 scrollbar-hide">
+      <div className="flex items-center whitespace-nowrap py-6 overflow-x-scroll space-x-5 scrollbar-hide  px-5 ">
         {Object.entries(requests).map(([key, { title, url }]) => {
           // console.log(key);
           return (

@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Thumnail from "../Components/thumnail";
 import Spinner from "../Components/spinner/spinner";
+import NProgress from "nprogress"; //nprogress module
+import "nprogress/nprogress.css"; //styles of nprogress
 
 export default function Search() {
   const [Query, setQuery] = useState("");
@@ -11,7 +13,7 @@ export default function Search() {
   const [ErrorText, setErrorText] = useState("");
 
   const searchHandler = async () => {
-    setLoading(true);
+    NProgress.start();
     const req = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=8e1b4952140dfb6e08f859338eb922de&query=${Query}&page=1`
     );
@@ -19,7 +21,7 @@ export default function Search() {
 
     if (result) {
       setData(result.results);
-      setLoading(false);
+      NProgress.done();
       console.log(result);
 
       if (result.errors) {

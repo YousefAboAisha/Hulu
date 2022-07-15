@@ -20,14 +20,19 @@ export default function Pagination() {
   };
 
   return (
-    <div className="flex relative items-center mb-[50px] my-5 justify-center">
+    <div className="flex relative items-center mb-[50px] my-5 justify-center gap-5">
       <button
-        className="inline-flex items-center gap-2 py-2 px-4 mr-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        className="inline-flex items-center gap-2 py-2 px-4 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         onClick={prevHandler}
       >
         <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4" />
         Previous
       </button>
+
+      <div>
+        Page <span className="font-bold">{page}</span>
+      </div>
+
       <button
         className="inline-flex items-center gap-2 py-2 px-4 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         onClick={nextHandler}

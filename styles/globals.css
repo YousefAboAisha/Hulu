@@ -1,6 +1,6 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
 
 * {
   padding: 0;
@@ -47,26 +47,25 @@ input[type="reset"] {
   border-radius: 10px;
 }
 
-#nprogress .bar {
+/* #nprogress .bar {
   background-color: #FFBB00 !important;
   height: 5px;
-}
+} */
 
-#nprogress .peg {
+/* #nprogress .peg {
   box-shadow: 0 0 10px #0F172A, 0 0 5px #0F172A;
-}
-
+} */
 
 #nprogress .spinner-icon {
   position: fixed;
-  display: block;
+  display: flex;
   z-index: 1031;
-  transform: translate(-50%, -50%);
-  bottom: 50%;
+  top: 50%;
   left: 50%;
-  width: 50px !important;
-  height: 50px !important;
-  border-top-color: #FFBB00 !important;
-  border-left-color: #FFBB00 !important;
-  background-color: #0f172afd;
+  width: 40px !important;
+  height: 40px !important;
+  border-top: 4px solid #0F172A !important;
+  border-bottom: 4px solid #0F172A !important;
+  border-left: 4px solid #F6C90E !important;
+  border-right: 4px solid #F6C90E !important;
 }

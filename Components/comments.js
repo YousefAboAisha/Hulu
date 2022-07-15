@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Spinner from "./spinner/spinner";
+import NProgress from "nprogress"; //nprogress module
+import "nprogress/nprogress.css"; //styles of nprogress
 
 export default function Comments() {
   const [comment, setComment] = useState("");
@@ -13,7 +15,7 @@ export default function Comments() {
   // console.log(movie_id);
 
   const commentHandler = async (e) => {
-    setLoading(true);
+    NProgress.start();
     e.preventDefault();
 
     let data = {
@@ -32,7 +34,7 @@ export default function Comments() {
     const result = await req.json();
     console.log(result);
     if (result) {
-      setLoading(false);
+      NProgress.done();
       setComment("");
     }
   };
