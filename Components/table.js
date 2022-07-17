@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
 export default function Table({ movie }) {
   return (
@@ -43,12 +43,12 @@ export default function Table({ movie }) {
             >
               Reviews
             </th>
-            <td className="flex px-2 py-2 gap-2 my-2 items-center text-dark">
+            <td className="flex px-2 py-2 gap-2 my-2 items-center text-dark font-bold">
               <FontAwesomeIcon
                 icon={faStar}
                 className="text-gold translate-y-[-1px] w-5 h-5"
               />
-              {movie.vote_average}
+              {movie.vote_average} out of (10)
             </td>
           </tr>
 
@@ -120,6 +120,24 @@ export default function Table({ movie }) {
                 <span className="ml-2 font-bold">
                   ({Math.floor(movie.runtime)} minutes)
                 </span>
+              </span>
+            </td>
+          </tr>
+
+          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th
+              scope="row"
+              className="px-6 py-4 text-dark font-bold whitespace-nowrap"
+            >
+              Vote Count
+            </th>
+            <td className="flex px-2 py-2 gap-2 my-2 items-center text-dark font-bold">
+              <FontAwesomeIcon
+                icon={faThumbsUp}
+                className="translate-y-[-1px] w-5 h-5"
+              />
+              <span className="text-[#303841] font-light">
+                {movie.vote_count}
               </span>
             </td>
           </tr>
