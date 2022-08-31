@@ -5,20 +5,28 @@ import Router from "next/router";
 
 import NProgress from "nprogress"; //nprogress module
 import "nprogress/nprogress.css"; //styles of nprogress
+import { useState } from "react";
+import Spinner from "../Components/spinner/spinner";
 //Binding events.
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
-
-NProgress.configure({
-  minimum: 0.4,
-  easing: "linear",
-  speed: 500,
-  showSpinner: true,
-});
 
 function MyApp({ Component, pageProps }) {
-  return (
+  const [Loading, setLoading] = useState(false);
+  Router.events.on("routeChangeStart", () => setLoading(true));
+  Router.events.on("routeChangeComplete", () => setLoading(false));
+  Router.events.on("routeChangeError", () => setLoading(false));
+
+  NProgress.configure({
+    minimum: 0.4,
+    easing: "linear",
+    speed: 500,
+    showSpinner: true,
+  });
+
+  return Loading ? (
+    <div className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+      <Spinner />
+    </div>
+  ) : (
     <Layout className="scroll-smooth transition-all">
       <Component {...pageProps} />
     </Layout>
