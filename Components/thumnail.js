@@ -16,7 +16,7 @@ export default function Thumnail({ result }) {
 
   return (
     <Link href={`/${genre}/${result.id}`}>
-      <div className="relative group rounded-md linear duration-500 shadow-lg cursor-pointer ">
+      <div className="relative group rounded-md linear duration-500 shadow-lg cursor-pointer border">
         <Image
           layout="responsive"
           height={1080}
@@ -44,19 +44,19 @@ export default function Thumnail({ result }) {
             {result.title || result.original_name}
           </h2>
 
-          <p className="truncate max-w-md text-light text-[14px]">
+          <p className="max-w-md text-light text-[14px] h-10 overflow-hidden">
             {result.overview || "Overview Not Supported!"}
           </p>
 
           <div className="flex items-center gap-3 p-1 mt-1">
-            <span className="text-[13px]">
+            {/* <span className="text-[13px]">
               {result.release_date || result.Fav_air_date}
             </span>
 
             <FontAwesomeIcon
               icon={faCircle}
               className="w-[4px] h-[4px] text-light"
-            />
+            /> */}
 
             <div className="relative flex items-center justify-center gap-2">
               <FontAwesomeIcon

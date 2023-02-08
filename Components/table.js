@@ -1,12 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faStar, faThumbsUp } from "@fortawesome/free-solid-svg-icons"
 
 export default function Table({ movie }) {
   return (
     <>
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <table className="w-full text-sm text-left">
         <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr className="bg-white border-b">
             <th
               scope="row"
               className="px-6 py-4 text-dark font-bold whitespace-nowrap"
@@ -18,7 +18,7 @@ export default function Table({ movie }) {
             </td>
           </tr>
 
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr className="bg-white border-b">
             <th
               scope="row"
               className={`px-6 py-4 text-dark font-bold whitespace-nowrap`}
@@ -36,7 +36,7 @@ export default function Table({ movie }) {
             </td>
           </tr>
 
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr className="bg-white border-b">
             <th
               scope="row"
               className="px-6 py-4 text-dark font-bold whitespace-nowrap"
@@ -52,7 +52,7 @@ export default function Table({ movie }) {
             </td>
           </tr>
 
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr className="bg-white border-b">
             <th
               scope="row"
               className="px-6 py-4 text-dark font-bold whitespace-nowrap"
@@ -65,12 +65,12 @@ export default function Table({ movie }) {
                   <span className="text-dark px-2 py-1 text-[14px]" key={index}>
                     {elem.name}
                   </span>
-                );
+                )
               })}
             </td>
           </tr>
 
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr className="bg-white border-b">
             <th
               scope="row"
               className="px-6 py-4 text-dark font-bold whitespace-nowrap"
@@ -83,12 +83,12 @@ export default function Table({ movie }) {
                   <span className="text-dark px-2 py-1 text-[14px]" key={index}>
                     {elem.name || " - "} | {elem.iso_3166_1 || " - "}
                   </span>
-                );
+                )
               })}
             </td>
           </tr>
 
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr className="bg-white border-b">
             <th
               scope="row"
               className="px-6 py-4 text-dark font-bold whitespace-nowrap"
@@ -101,12 +101,12 @@ export default function Table({ movie }) {
                   <span className="text-dark px-2 py-1 text-[14px]" key={index}>
                     {elem.name} | {elem.iso_639_1}
                   </span>
-                );
+                )
               })}
             </td>
           </tr>
 
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr className="bg-white border-b">
             <th
               scope="row"
               className="px-6 py-4 text-dark font-bold whitespace-nowrap"
@@ -124,7 +124,7 @@ export default function Table({ movie }) {
             </td>
           </tr>
 
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr className="bg-white border-b">
             <th
               scope="row"
               className="px-6 py-4 text-dark font-bold whitespace-nowrap"
@@ -144,5 +144,5 @@ export default function Table({ movie }) {
         </tbody>
       </table>
     </>
-  );
+  )
 }

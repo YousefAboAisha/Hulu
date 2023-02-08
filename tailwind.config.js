@@ -12,9 +12,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: "#303841",
-        light: "#EEEEEE",
-        gold: "#F6C90E",
+        dark: "#141414",
+        light: "#E6D5B8",
+        gold: "#F0A500",
       },
     },
     screens: {
@@ -33,6 +33,9 @@ module.exports = {
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }
     },
+    backgroundImage: {
+      "main-pattern": "url('/pattern.svg')",
+    },
   },
 
   plugins: [
@@ -42,4 +45,4 @@ module.exports = {
     "tailwindcss",
     "autoprefixer",
   ],
-};
+}

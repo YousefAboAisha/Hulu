@@ -12,15 +12,11 @@ const nextConfig = {
         destination: "/trending/?page=1",
         permanent: true,
       },
-    ];
+    ]
   },
-  reactStrictMode: true,
   images: {
     domains: ["image.tmdb.org"],
   },
-  "fontawesome-svg-core": {
-    license: "free",
-  },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

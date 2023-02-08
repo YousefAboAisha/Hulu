@@ -1,18 +1,12 @@
-import { faHeart, faSearch, faUser } from "@fortawesome/free-solid-svg-icons"
+import { FaHeart, FaUser } from "react-icons/fa"
 
 export const Routes = [
   {
-    icon: faSearch,
-    title: "Search",
-  },
-
-  {
-    icon: faHeart,
+    icon: FaHeart,
     title: "Whishlist",
   },
-
   {
-    icon: faUser,
-    title: "Account",
+    icon: FaUser,
+    title: "Profile",
   },
 ]

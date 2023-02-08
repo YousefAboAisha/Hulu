@@ -6,15 +6,14 @@ import { faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons"
 import Carousel from "../../Components/carousel"
 import Table from "../../Components/table"
 import Comments from "../../Components/comments"
-import Link from "next/link"
 
 export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
   const router = useRouter()
 
-  console.log("Movie Data", movie)
-  console.log("Related Movies", relatedMovies)
-  console.log("Keywords Movie", keywords)
-  console.log("Upcoming Movies", upcoming)
+  // console.log("Movie Data", movie)
+  // console.log("Related Movies", relatedMovies)
+  // console.log("Keywords Movie", keywords)
+  // console.log("Upcoming Movies", upcoming)
 
   const baseURL = "https://image.tmdb.org/t/p/original/"
   const imdbURL = "https://www.imdb.com/title/"
@@ -51,7 +50,7 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
           </div> */}
 
           {/* Middle section */}
-          <div className="relative container min-h-[600px] ">
+          <div className="relative w-11/12 md:w-10/12 lg:w-8/12 mx-auto min-h-[600px] ">
             <div className="relative w-full after:absolute after:w-full after:h-full after:left-0 after:top-0 after:bg-[#00000042] rounded-lg">
               <Image
                 layout="responsive"
@@ -84,7 +83,7 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
               <p className="w-full">{movie.overview}</p>
               <div className="relative flex gap-3">
                 <a href={movie.homepage} target="_blank" rel="noreferrer">
-                  <button className="relative border-1 flex items-center gap-2 mt-5 p-3 rounded-md text-[#FFF] shadow-xl bg-dark hover:bg-transparent hover:border-dark border-[1px] hover:text-dark ease-in-out duration-500">
+                  <button className="relative border-1 flex items-center gap-2 mt-5 p-3 rounded-md text-[#FFF] shadow-xl bg-dark">
                     Download Now
                     <FontAwesomeIcon
                       icon={faCirclePlay}
@@ -99,7 +98,7 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <button className="relative border-1 flex items-center gap-2 mt-5 p-[11px] rounded-md text-dark shadow-xl border-[1px] border-dark">
+                    <button className="relative border-1 flex items-center gap-2 mt-5 p-[11px] rounded-md text-dark border-[1px] border-dark">
                       IMDB page
                       <FontAwesomeIcon
                         icon={faPlay}
