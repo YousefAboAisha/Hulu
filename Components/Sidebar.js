@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import { Routes } from "../Data/Routes"
 
@@ -17,10 +16,7 @@ export default function Sidebar({ toggle, setToggle }) {
               className={`relative flex flex-col flex-wrap justify-center items-center gap-1 w-[60px] h-[50px] cursor-pointer z-10 `}
               onClick={() => setToggle(false)}
             >
-              <FontAwesomeIcon
-                icon={tab.icon}
-                className="text-[#FFF] w-[22px] h-[22px]"
-              />
+              <tab.icon className="text-[#FFF] w-[22px] h-[22px]" />
               <span className="text-[#FFF] text-[15px]">{tab.title}</span>
             </div>
           </Link>

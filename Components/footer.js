@@ -1,10 +1,4 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCirclePlay,
-  faStar,
-  faPlay,
-} from "@fortawesome/free-solid-svg-icons";
+import React from "react"
 
 export default function Footer() {
   return (
@@ -74,5 +68,5 @@ export default function Footer() {
         All Rights Reserved To Yousef R Abo Aisha ©
       </span>
     </div>
-  );
+  )
 }

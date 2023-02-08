@@ -1,8 +1,8 @@
 import React from "react"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons"
+import { BsFillPlayCircleFill } from "react-icons/bs"
+import { FaPlay } from "react-icons/fa"
 import Carousel from "../../Components/carousel"
 import Table from "../../Components/table"
 import Comments from "../../Components/comments"
@@ -85,10 +85,7 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
                 <a href={movie.homepage} target="_blank" rel="noreferrer">
                   <button className="relative border-1 flex items-center gap-2 mt-5 p-3 rounded-md text-[#FFF] shadow-xl bg-dark">
                     Download Now
-                    <FontAwesomeIcon
-                      icon={faCirclePlay}
-                      className="w-[22px] h-[22px] text-gold"
-                    />
+                    <BsFillPlayCircleFill size={25} className="text-gold" />
                   </button>
                 </a>
 
@@ -100,10 +97,7 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
                   >
                     <button className="relative border-1 flex items-center gap-2 mt-5 p-[11px] rounded-md text-dark border-[1px] border-dark">
                       IMDB page
-                      <FontAwesomeIcon
-                        icon={faPlay}
-                        className="w-[22px] h-[22px]"
-                      />
+                      <FaPlay />
                     </button>
                   </a>
                 ) : null}

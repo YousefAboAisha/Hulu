@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
-import Spinner from "./spinner/spinner";
+import React, { useState } from "react"
+import { IoMdClose } from "react-icons/io"
+import Spinner from "./spinner/spinner"
 
 export default function Comment({
   comment,
@@ -10,10 +9,10 @@ export default function Comment({
   mutate,
   data,
 }) {
-  const [Loading, setLoading] = useState(false);
+  const [Loading, setLoading] = useState(false)
 
   const deleteHandler = async (date) => {
-    setLoading(true);
+    setLoading(true)
     await fetch(
       `https://hulu-5b829-default-rtdb.firebaseio.com/comments/${movie_id}/${date}.json`,
       {
@@ -21,14 +20,14 @@ export default function Comment({
       }
     )
       .then((res) => {
-        mutate({ ...data });
-        setLoading(false);
-        console.log(res.json());
+        mutate({ ...data })
+        setLoading(false)
+        console.log(res.json())
       })
       .catch((error) => {
-        console.log(error);
-      });
-  };
+        console.log(error)
+      })
+  }
 
   return Loading ? (
     <Spinner />
@@ -38,11 +37,10 @@ export default function Comment({
     >
       <h2 className="font-bold text-[14px] truncate">Yousef Rashad</h2>
       <p className="text-[13px] break-words">{comment}</p>
-      <FontAwesomeIcon
-        icon={faClose}
+      <IoMdClose
         className="absolute top-2 right-2 w-4 h-4 cursor-pointer ease-linear duration-200 hover:text-[red]"
         onClick={() => deleteHandler(comment_id)}
       />
     </div>
-  );
+  )
 }

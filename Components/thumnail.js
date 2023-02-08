@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import Image from "next/image"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faStar, faCircle, faHeart } from "@fortawesome/free-solid-svg-icons"
 import { useRouter } from "next/router"
 import Link from "next/link"
+import { BsFillStarFill, BsFillHeartFill } from "react-icons/bs"
 
 export default function Thumnail({ result }) {
   const baseURL = "https://image.tmdb.org/t/p/original/"
@@ -32,8 +31,7 @@ export default function Thumnail({ result }) {
         />
 
         <div className="absolute top-2 right-2 p-2 bg-[#ffffff42] backdrop-blur-[10px] rounded-full cursor-pointer hover:animate-pulse ">
-          <FontAwesomeIcon
-            icon={faHeart}
+          <BsFillHeartFill
             className={`h-4 w-4 ${Fav ? "text-[#c73828]" : "text-[#ffffff]"}`}
             onClick={() => setFav(!Fav)}
           />
@@ -59,10 +57,7 @@ export default function Thumnail({ result }) {
             /> */}
 
             <div className="relative flex items-center justify-center gap-2">
-              <FontAwesomeIcon
-                icon={faStar}
-                className="w-[17px] h-[17px] text-gold mb-[3px]"
-              />
+              <BsFillStarFill className="w-[17px] h-[17px] text-gold mb-[3px]" />
 
               <span className="text-[12px] text-light">
                 {result.vote_average.toFixed(1)}
