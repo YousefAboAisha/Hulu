@@ -1,37 +1,17 @@
-import { useState } from "react";
-import Link from "next/link";
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeart,
-  faSearch,
-  faUser,
-  faBarsStaggered,
-} from "@fortawesome/free-solid-svg-icons";
-import Sidebar from "./Sidebar";
+import { useState } from "react"
+import Link from "next/link"
+import React from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons"
+import Sidebar from "./Sidebar"
+import { Routes } from "../Data/Routes"
 
 export default function Navbar() {
-  const [Toggle, setToggle] = useState(false);
-
-  const tabs = [
-    {
-      icon: faUser,
-      title: "Account",
-    },
-    {
-      icon: faSearch,
-      title: "Search",
-    },
-
-    {
-      icon: faHeart,
-      title: "Whishlist",
-    },
-  ];
+  const [Toggle, setToggle] = useState(false)
 
   return (
-    <div className="fixed w-[100%] flex justify-between items-center bg-dark z-[100000] min-h-[85px]">
-      <div className="ml-5">
+    <div className="fixed w-[100%] bg-dark z-[100000] h-[75px] ">
+      <div className="container flex justify-between items-center h-full overflow-hidden">
         <Link href={"/trending/?page=1"}>
           <a>
             <svg
@@ -45,29 +25,30 @@ export default function Navbar() {
             </svg>
           </a>
         </Link>
-      </div>
 
-      <div className="relative flex items-center justify-center gap-10 mr-5">
-        {tabs.map((tab, index) => {
-          return (
-            <Link href={`/${tab.title.toLowerCase()}`} key={index}>
-              <div className="relative hidden mt-3 flex-col flex-wrap justify-center items-center gap-1 w-[60px] min-h-[65px] cursor-pointer group sm:flex">
-                <FontAwesomeIcon
-                  icon={tab.icon}
-                  className="text-[#FFF] w-[20px] h-[20px]"
-                />
-                <span className="text-[#FFF] text-[15px]">{tab.title}</span>
-              </div>
-            </Link>
-          );
-        })}
-        <FontAwesomeIcon
-          icon={faBarsStaggered}
-          className="block text-[#FFF] w-[22px] h-[22px] sm:hidden cursor-pointer"
-          onClick={() => setToggle(!Toggle)}
-        />
+        <div className="relative flex items-center justify-center gap-10">
+          {Routes.map((tab, index) => {
+            return (
+              <Link href={`/${tab.title.toLowerCase()}`} key={index}>
+                <div className="relative hidden mt-3 flex-col flex-wrap justify-center items-center gap-1 w-[60px] min-h-[65px] cursor-pointer group sm:flex">
+                  <FontAwesomeIcon
+                    icon={tab.icon}
+                    className="text-[#FFF] w-[20px] h-[20px]"
+                  />
+                  <span className="text-[#FFF] text-[15px]">{tab.title}</span>
+                </div>
+              </Link>
+            )
+          })}
+
+          <FontAwesomeIcon
+            icon={faBarsStaggered}
+            className="block text-[#FFF] w-[22px] h-[22px] sm:hidden cursor-pointer"
+            onClick={() => setToggle(!Toggle)}
+          />
+        </div>
       </div>
       <Sidebar toggle={Toggle} setToggle={setToggle} />
     </div>
-  );
+  )
 }

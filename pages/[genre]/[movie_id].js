@@ -1,23 +1,23 @@
-import React from "react";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons";
-import Carousel from "../../Components/carousel";
-import Table from "../../Components/table";
-import Comments from "../../Components/comments";
-import Link from "next/link";
+import React from "react"
+import Image from "next/image"
+import { useRouter } from "next/router"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCirclePlay, faPlay } from "@fortawesome/free-solid-svg-icons"
+import Carousel from "../../Components/carousel"
+import Table from "../../Components/table"
+import Comments from "../../Components/comments"
+import Link from "next/link"
 
 export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
-  const router = useRouter();
+  const router = useRouter()
 
-  console.log("Movie Data", movie);
-  console.log("Related Movies", relatedMovies);
-  console.log("Keywords Movie", keywords);
-  console.log("Upcoming Movies", upcoming);
+  console.log("Movie Data", movie)
+  console.log("Related Movies", relatedMovies)
+  console.log("Keywords Movie", keywords)
+  console.log("Upcoming Movies", upcoming)
 
-  const baseURL = "https://image.tmdb.org/t/p/original/";
-  const imdbURL = "https://www.imdb.com/title/";
+  const baseURL = "https://image.tmdb.org/t/p/original/"
+  const imdbURL = "https://www.imdb.com/title/"
 
   return (
     <>
@@ -32,9 +32,9 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
           </button>
         </div>
       ) : (
-        <div className="relative mt-[80px] ">
+        <div className="relative mt-[120px] ">
           {/* Comments right section */}
-          <div className="hidden md:hidden lg:w-3/12 lg:fixed lg:block h-full py-5 px-6 top-[85px] overflow-y-scroll pb-[250px] ">
+          {/* <div className="hidden md:hidden lg:w-3/12 lg:fixed lg:block h-full py-5 px-6 top-[85px] overflow-y-scroll pb-[250px] ">
             <h2 className="font-bold text-dark text-lg mb-3">KEYWORDS</h2>
             <div className="relative flex gap-3 flex-row flex-wrap">
               {keywords.keywords.map((elem) => {
@@ -48,11 +48,11 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
                 );
               })}
             </div>
-          </div>
+          </div> */}
 
           {/* Middle section */}
-          <div className="min-h-[1300px] lg:w-6/12 lg:mt-10 md:w-full mx-auto sm:w-full">
-            <div className="relative lg:w-11/12 md:full sm:full mx-auto after:absolute after:w-full after:h-full after:left-0 after:top-0 after:bg-[#00000042] lg:rounded-xl md:rounded-none sm:rounded-none shadow-l">
+          <div className="relative container min-h-[600px] ">
+            <div className="relative w-full after:absolute after:w-full after:h-full after:left-0 after:top-0 after:bg-[#00000042] rounded-lg">
               <Image
                 layout="responsive"
                 height={1080}
@@ -67,7 +67,7 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
               <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black h-[20%] w-full"></div>
             </div>
 
-            <div className="lg:p-0 md:p-3 sm:p-3 mt-[20px] p-3 lg:w-11/12 md:full sm:full mx-auto">
+            <div className="mt-8">
               <h2 className="text-2xl font-bold text-dark mb-6">
                 {movie.title || movie.original_name} (
                 {movie.release_date.split("-")[0]})
@@ -110,7 +110,7 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
                 ) : null}
               </div>
 
-              <div className="my-10">
+              <div className="my-8">
                 <h2 className="mt-5 font-bold text-dark text-2xl mb-1">
                   Related Movies
                 </h2>
@@ -124,7 +124,7 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
           </div>
 
           {/* Ads right section */}
-          <div className="hidden md:hidden lg:w-3/12 lg:fixed lg:flex gap-3 h-full border shadow-md top-[85px] p-2 right-0 text-[#FFF] lg:flex-col lg:overflow-y-scroll">
+          {/* <div className="hidden md:hidden lg:w-3/12 lg:fixed lg:flex gap-3 h-full border shadow-md top-[85px] p-2 right-0 text-[#FFF] lg:flex-col lg:overflow-y-scroll">
             {upcoming.results.slice(0, 3).map((elem) => {
               return (
                 <div key={elem.id} className="shadow-lg">
@@ -142,19 +142,19 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
                     placeholder="blur"
                   />
                 </div>
-              );
+              )
             })}
-          </div>
+          </div> */}
         </div>
       )}
     </>
-  );
+  )
 }
 
 export async function getServerSideProps(context) {
-  const API_KEY = process.env.API_KEY;
-  const { params } = context;
-  const { movie_id } = params;
+  const API_KEY = process.env.API_KEY
+  const { params } = context
+  const { movie_id } = params
 
   const [req1, req2, req3, req4] = await Promise.all([
     fetch(
@@ -169,14 +169,14 @@ export async function getServerSideProps(context) {
     fetch(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
     ),
-  ]);
+  ])
 
   const [movie, keywords, relatedMovies, upcoming] = await Promise.all([
     req1.json(),
     req2.json(),
     req3.json(),
     req4.json(),
-  ]);
+  ])
 
   return {
     props: {
@@ -185,5 +185,5 @@ export async function getServerSideProps(context) {
       relatedMovies,
       upcoming,
     },
-  };
+  }
 }
