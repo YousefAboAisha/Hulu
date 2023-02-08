@@ -14,8 +14,15 @@ const nextConfig = {
       },
     ]
   },
+
+  reactStrictMode: true,
+
   images: {
     domains: ["image.tmdb.org"],
+  },
+
+  dependencies: {
+    "react-icons": "^4.7.1",
   },
 }
 
