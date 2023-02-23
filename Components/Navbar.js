@@ -1,19 +1,19 @@
-import { useState } from "react"
-import Link from "next/link"
-import React from "react"
-import { Routes } from "../Data/Routes"
-import { RiMovie2Line } from "react-icons/ri"
-import { useRouter } from "next/router"
+import { useState } from "react";
+import Link from "next/link";
+import React from "react";
+import { Routes } from "../Data/Routes";
+import { RiMovie2Line } from "react-icons/ri";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
-  const [Query, setQuery] = useState("")
-  const router = useRouter()
+  const [Query, setQuery] = useState("");
+  const router = useRouter();
 
   const handleEnter = (e) => {
     if (e.key === "Enter") {
-      router.push(`/search?query=${Query}`)
+      router.push(`/search?query=${Query}`);
     }
-  }
+  };
 
   return (
     <div className="fixed w-[100%] bg-dark z-50 h-[75px] ">
@@ -44,10 +44,10 @@ export default function Navbar() {
                   </span> */}
                 </div>
               </Link>
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
+  );
 }

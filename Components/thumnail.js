@@ -1,21 +1,21 @@
-import React, { useState } from "react"
-import Image from "next/image"
-import { useRouter } from "next/router"
-import Link from "next/link"
-import { BsFillStarFill, BsFillHeartFill } from "react-icons/bs"
+import React, { useState } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { BsFillStarFill, BsFillHeartFill } from "react-icons/bs";
 
 export default function Thumnail({ result }) {
-  const baseURL = "https://image.tmdb.org/t/p/original/"
-  const router = useRouter()
-  const genre = router.query.genre
-  console.log(router)
-  const [Fav, setFav] = useState()
+  const baseURL = "https://image.tmdb.org/t/p/original/";
+  const router = useRouter();
+  const genre = router.query.genre;
+  console.log(router);
+  const [Fav, setFav] = useState();
 
-  console.log(result)
+  console.log(result);
 
   return (
     <Link href={`/${genre}/${result.id}`}>
-      <div className="relative group rounded-md linear duration-500 shadow-lg cursor-pointer border">
+      <div className="relative group rounded-md linear duration-500 shadow-lg cursor-pointer border z-0">
         <Image
           layout="responsive"
           height={1080}
@@ -30,11 +30,12 @@ export default function Thumnail({ result }) {
           placeholder="blur"
         />
 
-        <div className="absolute top-2 right-2 p-2 bg-[#ffffff42] backdrop-blur-[10px] rounded-full cursor-pointer hover:animate-pulse ">
-          <BsFillHeartFill
-            className={`h-4 w-4 ${Fav ? "text-[#c73828]" : "text-[#ffffff]"}`}
-            onClick={() => setFav(!Fav)}
-          />
+        <div className="absolute top-2 right-2">
+          <BsFillStarFill size={30} className="text-gold" />
+
+          <span className="text-[10px] font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            {result.vote_average.toFixed(1)}
+          </span>
         </div>
 
         <div className="p-2 bg-dark text-[#FFF]">
@@ -56,16 +57,10 @@ export default function Thumnail({ result }) {
               className="w-[4px] h-[4px] text-light"
             /> */}
 
-            <div className="relative flex items-center justify-center gap-2">
-              <BsFillStarFill className="w-[17px] h-[17px] text-gold mb-[3px]" />
-
-              <span className="text-[12px] text-light">
-                {result.vote_average.toFixed(1)}
-              </span>
-            </div>
+            <div className="relative flex items-center justify-center"></div>
           </div>
         </div>
       </div>
     </Link>
-  )
+  );
 }

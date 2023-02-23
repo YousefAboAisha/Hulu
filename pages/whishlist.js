@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import Results from "../Components/Results";
+import { MoviesContext } from "../Context/MoviesProvider";
 
 export default function Whishlist() {
-  return <div className="relative mt-[90px] p-3">Still Working On it...</div>;
+  const { favMovies, removeFromWhishlist, clearCart } =
+    useContext(MoviesContext);
+
+  return (
+    <div className="relative mt-[90px] p-3">
+      <Results movies={favMovies} />
+    </div>
+  );
 }

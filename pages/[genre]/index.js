@@ -7,6 +7,8 @@ import Pagination from "../../Components/pagination";
 export default function Home({ movies }) {
   // console.log(movies.results);
 
+  console.log(movies);
+
   return (
     <div>
       <Head>

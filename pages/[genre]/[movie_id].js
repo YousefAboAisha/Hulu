@@ -1,22 +1,28 @@
-import React from "react"
-import Image from "next/image"
-import { useRouter } from "next/router"
-import { BsFillPlayCircleFill } from "react-icons/bs"
-import { FaPlay } from "react-icons/fa"
-import Carousel from "../../Components/carousel"
-import Table from "../../Components/table"
-import Comments from "../../Components/comments"
+import React, { useContext } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { BsFillPlayCircleFill, BsFillHeartFill } from "react-icons/bs";
+import { FaPlay } from "react-icons/fa";
+import Carousel from "../../Components/carousel";
+import Table from "../../Components/table";
+import Comments from "../../Components/comments";
+import { MoviesContext } from "../../Context/MoviesProvider";
 
 export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
-  const router = useRouter()
+  const router = useRouter();
+  const { favMovies, addToWhishlist } = useContext(MoviesContext);
 
   // console.log("Movie Data", movie)
   // console.log("Related Movies", relatedMovies)
   // console.log("Keywords Movie", keywords)
   // console.log("Upcoming Movies", upcoming)
 
-  const baseURL = "https://image.tmdb.org/t/p/original/"
-  const imdbURL = "https://www.imdb.com/title/"
+  const baseURL = "https://image.tmdb.org/t/p/original/";
+  const imdbURL = "https://www.imdb.com/title/";
+
+  const { id, backdrop_path, poster_path } = movie;
+
+  const isInCart = favMovies.some((item) => item.id === id);
 
   return (
     <>
@@ -64,6 +70,24 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
                 priority={true}
               />
               <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black h-[20%] w-full"></div>
+
+              <div
+                onClick={() =>
+                  addToWhishlist({ id, backdrop_path, poster_path })
+                }
+                className={`absolute top-2 right-2 p-3 bg-[#ffffff42] backdrop-blur-[10px] rounded-full cursor-pointer z-10  ${
+                  isInCart
+                    ? "text-[#c73828] cursor-not-allowed"
+                    : "text-[#ffffff]"
+                }`}
+                title={
+                  isInCart
+                    ? "Movie is already added to whishlist"
+                    : "Add movie to whishlist"
+                }
+              >
+                <BsFillHeartFill size={20} />
+              </div>
             </div>
 
             <div className="mt-8">
@@ -141,13 +165,13 @@ export default function Movie({ movie, relatedMovies, keywords, upcoming }) {
         </div>
       )}
     </>
-  )
+  );
 }
 
 export async function getServerSideProps(context) {
-  const API_KEY = process.env.API_KEY
-  const { params } = context
-  const { movie_id } = params
+  const API_KEY = process.env.API_KEY;
+  const { params } = context;
+  const { movie_id } = params;
 
   const [req1, req2, req3, req4] = await Promise.all([
     fetch(
@@ -162,14 +186,14 @@ export async function getServerSideProps(context) {
     fetch(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
     ),
-  ])
+  ]);
 
   const [movie, keywords, relatedMovies, upcoming] = await Promise.all([
     req1.json(),
     req2.json(),
     req3.json(),
     req4.json(),
-  ])
+  ]);
 
   return {
     props: {
@@ -178,5 +202,5 @@ export async function getServerSideProps(context) {
       relatedMovies,
       upcoming,
     },
-  }
+  };
 }
